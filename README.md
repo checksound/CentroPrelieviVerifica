@@ -63,4 +63,4 @@ Create una classe *Esame* per rappresentare le richieste d'esame con due attribu
 ## Soluzione
 
 L'applicazione [CentroPrelieviApplicazione](./src/CentroPrelieviApplicazione.java) con
-le classi [Esame](./src/Esame.java), [Medico](./src/Medico.java) ed [Esame](./src/Esame.java)
+le classi [Paziente](./src/Paziente.java), [Medico](./src/Medico.java) ed [Esame](./src/Esame.java)
