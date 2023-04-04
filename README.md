@@ -33,7 +33,7 @@ massimo di 5 secondi (un tempo random tra 1 e 5 secondi).
 Finito di giocare a carte riprende il proprio lavoro controllando nel contenitore
 se ci sono esami ha eseguire.
 
-Il programma va avanti indefinitivamente, per fermarlo è necessario fermarlo 
+Il programma va avanti indefinitamente, per fermarlo è necessario fermarlo 
 dall'esterno.
 
 ## Ricapitolo

@@ -1,5 +1,4 @@
 public class Esame {
-
     public final String name;
     public final int numEsame;
 
