@@ -2,7 +2,8 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
 public class Paziente extends Thread {
-
+        private boolean hasEsito = false;
+        private EsitoEsame esitoEsame;
         private Random random = new Random();
         private BlockingQueue<Esame> queue;
         public Paziente(String name, BlockingQueue<Esame> queue) {
@@ -11,7 +12,6 @@ public class Paziente extends Thread {
         }
 
         public void run() {
-
             int numEsame = 1;
             while(true) {
 
@@ -19,10 +19,14 @@ public class Paziente extends Thread {
                 numEsame++;
                 try {
                     queue.put(esame);
-                    System.out.println(Thread.currentThread().getName() + " - RICHIESTA ESAME: " + esame );
+                    System.out.println(Thread.currentThread().getName() + " - RICHIESTA ESAME: " + esame);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+
+                EsitoEsame esitoEsame = waitRispostaDottore();
+
+                System.out.println("Arrivate risposta esame: " + esitoEsame);
 
                 int randomNum = random.nextInt(1000);
 
@@ -34,4 +38,26 @@ public class Paziente extends Thread {
             }
 
         }
+
+        private synchronized EsitoEsame waitRispostaDottore() {
+            while(!hasEsito) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            hasEsito = false;
+            return esitoEsame;
+        }
+
+        public synchronized void  setEsito(EsitoEsame esitoEsame) {
+            this.hasEsito = true;
+            this.esitoEsame = esitoEsame;
+    }
+
+    public String toString() {
+            return "Paziente[nome=" + getName() + "]";
+    }
+
 }

@@ -1,16 +1,16 @@
 public class Esame {
-    public final String name;
+    public final String namePaziente;
     public final int numEsame;
 
-    public Esame(String name, int numEsame) {
-        this.name = name;
+    public Esame(String namePaziente, int numEsame) {
+        this.namePaziente = namePaziente;
         this.numEsame = numEsame;
     }
 
     @Override
     public String toString() {
         return "Esame{" +
-                "name='" + name + '\'' +
+                "name='" + namePaziente + '\'' +
                 ", numEsame=" + numEsame +
                 '}';
     }
